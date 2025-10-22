@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInMove 1.5s ease forwards;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  transition: all 0.5s ease;
+}
+
+.buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+button {
+  padding: 0.8rem 2rem;
+  border: none;
+  background: black;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.2s ease, background 0.3s;
+}
+
+button:hover {
+  background: #444;
+  transform: scale(1.1);
+}
+
+/* Fade In Animation */
+@keyframes fadeInMove {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Flash Effect */
+.flash {
+  position: fixed;
+  inset: 0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.flash img {
+  max-width: 100%;
+  max-height: 100%;
+  transform: scale(1);
+  animation: flashAnim 1s ease forwards;
+}
+
+@keyframes flashAnim {
+  0% { opacity: 0; transform: scale(0.5); }
+  20% { opacity: 1; transform: scale(1.2); }
+  70% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+
+/* Replacement fade */
+.replacement {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 200;
+}
+
+.replacement img {
+  max-width: 100%;
+  opacity: 0;
+  transform: scale(1.2);
+  animation: fadeInSlow 5s ease forwards;
+}
+
+@keyframes fadeInSlow {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hidden {
+  display: none;
+}
